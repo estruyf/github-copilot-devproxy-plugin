@@ -7,7 +7,7 @@
     "configSection": "githubCopilotListener"
   }],
   "githubCopilotListener": {
-    "logFolder": "./logs"
+    "logPath": "./logs"
   },
   "urlsToWatch": [
     "https://api.githubcopilot.com/*",

@@ -1,5 +1,6 @@
 using Microsoft.DevProxy.Abstractions;
 using Microsoft.Extensions.Configuration;
+using Titanium.Web.Proxy.Http;
 using System.Text.Json;
 
 namespace GitHub.Copilot.Listener.Plugin;
@@ -27,10 +28,12 @@ public class GitHubCopilotListenerPlugin : BaseProxyPlugin
                                 IConfigurationSection? configSection = null)
   {
     base.Register(pluginEvents, context, urlsToWatch, configSection);
+    Console.WriteLine($"URLs: {urlsToWatch}");
 
     configSection?.Bind(_configuration);
 
     pluginEvents.BeforeRequest += BeforeRequest;
+    pluginEvents.AfterResponse += AfterResponse;
   }
 
   private Task BeforeRequest(object sender, ProxyRequestArgs e)
@@ -46,8 +49,7 @@ public class GitHubCopilotListenerPlugin : BaseProxyPlugin
     File.WriteAllText(filePath, "Nothing to log");
 
     if (_urlsToWatch is null ||
-      !e.HasRequestUrlMatch(_urlsToWatch) ||
-      !e.Session.HttpClient.Request.Method.Equals("PATCH", StringComparison.CurrentCultureIgnoreCase))
+      !e.HasRequestUrlMatch(_urlsToWatch))
     {
       File.WriteAllText(filePath, "Nothing to log");
       return Task.CompletedTask;
@@ -64,6 +66,18 @@ public class GitHubCopilotListenerPlugin : BaseProxyPlugin
       return Task.CompletedTask;
     }
 
+    return Task.CompletedTask;
+  }
+
+  private Task AfterResponse(object? sender, ProxyResponseArgs e)
+  {
+    Request request = e.Session.HttpClient.Request;
+    if (_urlsToWatch is not null &&
+        e.HasRequestUrlMatch(_urlsToWatch))
+    {
+
+    }
+    Console.WriteLine("AfterResponse");
     return Task.CompletedTask;
   }
 }
