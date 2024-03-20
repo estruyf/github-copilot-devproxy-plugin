@@ -1,16 +1,21 @@
 {
   "$schema": "https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.15.0/rc.schema.json",
   "plugins": [{
-    "name": "GitHub.Copilot.Listener.Plugin.GitHubCopilotListenerPlugin",
+    "name": "GitHubCopilotListenerPlugin",
     "enabled": true,
-    "pluginPath": "/Users/eliostruyf/nodejs/github-copilot-calls/bin/Debug/net8.0/github-copilot-calls.dll"
+    "pluginPath": "./bin/Debug/net8.0/github-copilot-calls.dll",
+    "configSection": "githubCopilotListener"
   }],
+  "githubCopilotListener": {
+    "logFolder": "./logs"
+  },
   "urlsToWatch": [
     "https://api.githubcopilot.com/*",
     "https://copilot.github.com/*",
-    "https://copilot-proxy.githubusercontent.com/*"
+    "https://copilot-proxy.githubusercontent.com/*",
+    "https://www.eliostruyf.com/*"
   ],
   "labelMode": "text",
-  "logLevel": "information",
+  "logLevel": "debug",
   "newVersionNotification": "stable"
 }
