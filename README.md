@@ -64,3 +64,8 @@ Once you have created your configuration, you can run the Dev Proxy with the plu
 ```bash
 devproxy
 ```
+
+## References
+
+- [GitHub Copilot Firewall settings](https://docs.github.com/en/copilot/troubleshooting-github-copilot/troubleshooting-firewall-settings-for-github-copilot)
+- [Network Connections in Visual Studio Code](https://code.visualstudio.com/docs/setup/network)
