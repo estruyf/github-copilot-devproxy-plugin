@@ -69,3 +69,4 @@ devproxy
 
 - [GitHub Copilot Firewall settings](https://docs.github.com/en/copilot/troubleshooting-github-copilot/troubleshooting-firewall-settings-for-github-copilot)
 - [Network Connections in Visual Studio Code](https://code.visualstudio.com/docs/setup/network)
+- [Dev Proxy](https://github.com/microsoft/dev-proxy)
