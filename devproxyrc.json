@@ -12,8 +12,7 @@
   "urlsToWatch": [
     "https://api.githubcopilot.com/*",
     "https://copilot.github.com/*",
-    "https://copilot-proxy.githubusercontent.com/*",
-    "https://www.eliostruyf.com/*"
+    "https://copilot-proxy.githubusercontent.com/*"
   ],
   "labelMode": "text",
   "logLevel": "debug",
